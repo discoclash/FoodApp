@@ -44,5 +44,6 @@ extension MenuViewController: MenuDisplayLogic {
     }
     
     func displayError(_ viewModel: MenuDataFlow.DisplayError.ViewModel) {
+        contantView.displayError(withViewModel: viewModel)
     }
 }
