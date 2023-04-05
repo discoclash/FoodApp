@@ -1,0 +1,107 @@
+[
+    {
+        "category": "Пицца",
+        "name": "Ветчина и грибы",
+        "description": "Ветчина,шампиньоны, увеличинная порция моцареллы, томатный соус",
+        "imageUrl": "vetchina.png",
+        "price": 345
+    },
+    {
+        "category": "Пицца",
+        "name": "Баварские Колбаски",
+        "description": "Баварски колбаски,ветчина, пикантная пепперони, острая чоризо, моцарелла, томатный соус",
+        "imageUrl": "kolbaski.png",
+        "price": 345
+    },
+    {
+        "category": "Пицца",
+        "name": "Нежный Лосось",
+        "description": "Лосось, томаты черри, моцарелла, соус песто",
+        "imageUrl": "losos.png",
+        "price": 345
+    },
+    {
+        "category": "Пицца",
+        "name": "Четыре Сыра",
+        "description": "Соус Карбонара, Сыр Моцарелла, Сыр Пармезан, Сыр Роккфорти, Сыр Чеддер (тёртый)",
+        "imageUrl": "4syra.png",
+        "price": 300
+    },
+    {
+        "category": "Комбо",
+        "name": "Комбо Ветчина и Грибы",
+        "description": "Пицца Ветчина и Грибы и напиток на выбор",
+        "imageUrl": "combovetchina.png",
+        "price": 410
+    },
+    {
+        "category": "Комбо",
+        "name": "Комбо Баварские Колбаски",
+        "description": "Пицца Баварские Колбаски и напиток на выбор",
+        "imageUrl": "combokolbaski.png",
+        "price": 410
+    },
+    {
+        "category": "Комбо",
+        "name": "Комбо Нежный Лосось",
+        "description": "Пицца Нежный Лосось и напиток на выбор",
+        "imageUrl": "combolosos.png",
+        "price": 410
+    },
+    {
+        "category": "Десерты",
+        "name": "Вишневый Пирог",
+        "description": "Домашний десерт с вишней",
+        "imageUrl": "vishnya.png",
+        "price": 150
+    },
+    {
+        "category": "Десерты",
+        "name": "Клубничный Пирог",
+        "description": "Домашний десерт с клубниуой",
+        "imageUrl": "klubnika.png",
+        "price": 150
+    },
+    {
+        "category": "Десерты",
+        "name": "Вишневый Торт",
+        "description": "Легкий десерт с вишней",
+        "imageUrl": "tortvishnya.png",
+        "price": 150
+    },
+    {
+        "category": "Десерты",
+        "name": "Клубничный Торт",
+        "description": "Лёгкий десерт с клубникой",
+        "imageUrl": "tortklubnika.png",
+        "price": 150
+    },
+    {
+        "category": "Напитки",
+        "name": "Кола",
+        "description": "Сильногазированный напиток с классическим вкусом",
+        "imageUrl": "cola.png",
+        "price": 100
+    },
+    {
+        "category": "Напитки",
+        "name": "Спрайт",
+        "description": "Сильногазированный напиток с классическим вкусом",
+        "imageUrl": "sprite.png",
+        "price": 100
+    },
+    {
+        "category": "Напитки",
+        "name": "Фанта",
+        "description": "Сильногазированный напиток с классическим вкусом",
+        "imageUrl": "fanta.png",
+        "price": 100
+    },
+    {
+        "category": "Напитки",
+        "name": "Кола Лайт",
+        "description": "Сильногазированный напиток без сахара",
+        "imageUrl": "cola.png",
+        "price": 100
+    }
+]
