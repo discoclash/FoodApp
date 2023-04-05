@@ -20,12 +20,6 @@ final class MenuProvider: ProvidesMenu {
     
     func fetchMenu(completion: @escaping (Result<[FoodModel], Error>) -> Void) {
         service.fetchMenu { result in
-//            switch result {
-//            case let .success(response):
-//                    // заполняем CoreData
-//            case let .failure(_):
-//                // пробуем вызвать CoreData
-//            }
             completion(result)
         }
     }

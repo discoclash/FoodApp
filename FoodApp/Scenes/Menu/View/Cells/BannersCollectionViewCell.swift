@@ -7,6 +7,7 @@
 
 import UIKit
 
+// ячейка коллекции с баннером
 class BannersCollectionViewCell: UICollectionViewCell {
     lazy var banner: UIImageView = {
         let image = UIImageView()

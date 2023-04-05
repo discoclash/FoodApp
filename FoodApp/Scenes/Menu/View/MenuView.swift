@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// протокол для взаимодействия MenuViewController с MenuView
 protocol DisplayMenuView: UIView {
     func configure(withViewModel: MenuDataFlow.DisplayMenu.ViewModel)
     func displayError(withViewModel: MenuDataFlow.DisplayError.ViewModel)

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// ячейка для оформления верхней части таблицы с меню
 class TopMenuTableViewCell: UITableViewCell {
  
     private lazy var topView: UIView = {

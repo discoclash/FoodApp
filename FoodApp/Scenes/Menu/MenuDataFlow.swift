@@ -7,6 +7,7 @@
 
 import Foundation
 
+// потоки в VIP-цикле
 enum MenuDataFlow {
     
     // загрузка меню

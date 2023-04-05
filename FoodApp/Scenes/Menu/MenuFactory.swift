@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// фабрика для создания ViewController'a
 struct MenuFactory {
     func build() -> UIViewController {
         let service = MenuService(uri: "http://localhost:5050/menu.json")

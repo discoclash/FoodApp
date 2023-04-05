@@ -6,21 +6,24 @@
 //
 
 import UIKit
-
+// протокол делегата для скрола выбранной категории
 protocol ScrollToCategoryDelegate: AnyObject {
     func scrollToCategory(index: Int)
 }
 
+// протокол делегата для смены выбранной категории в хэдере во время скрола
 protocol SelectCategoryDelegate: AnyObject {
     func selectCategory(category: Category)
 }
 
+// протокол TableManager'a для внешнего взамодействия
 protocol MenuTableManagerProtocol: UITableViewDataSource, UITableViewDelegate {
     var menuModels: [FoodModel] {get set}
     var scrollToCategoryDelegate: ScrollToCategoryDelegate? {get set}
     var selectCategoryDelegate: SelectCategoryDelegate? {get set}
 }
 
+// TableManager для заполнения таблицы основной MenuView
 final class MenuTableManager: NSObject, MenuTableManagerProtocol {
     var menuModels: [FoodModel] = []
     weak var scrollToCategoryDelegate: ScrollToCategoryDelegate?
@@ -50,16 +53,7 @@ final class MenuTableManager: NSObject, MenuTableManagerProtocol {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         let foodModel = menuModels[indexPath.row - 1]
-        cell.setupCell(name: foodModel.name, description: foodModel.description, price: foodModel.price, category: foodModel.category)
-        if let url = URL(string: "http://localhost:5050/" + foodModel.imageUrl) {
-            let task = URLSession.shared.dataTask(with: url) { data, _, _ in
-                guard let data = data else { return }
-                DispatchQueue.main.async {
-                    cell.foodImage.image = UIImage(data: data)
-                }
-            }
-            task.resume()
-        }
+        cell.setupCell(imageUrl: foodModel.imageUrl, name: foodModel.name, description: foodModel.description, price: foodModel.price, category: foodModel.category)
         return cell
     }
     

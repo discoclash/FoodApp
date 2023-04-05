@@ -7,10 +7,12 @@
 
 import UIKit
 
+// протокол делегата для скрола до необходимой категории в меню
 protocol SelectedCategoryDelegate: AnyObject {
     func categoryDidSelected(category: Category)
 }
 
+// хэдер таблицы меню с категориями еды
 class MenuCategoryHeader: UITableViewHeaderFooterView {
     
     weak var delegate: SelectedCategoryDelegate?
@@ -84,9 +86,6 @@ extension MenuCategoryHeader: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedCategory = categories[indexPath.item]
-//        collectionView.reloadData()
-//        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         delegate?.categoryDidSelected(category: categories[indexPath.item])
     }
 }

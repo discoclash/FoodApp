@@ -7,6 +7,7 @@
 
 import UIKit
 
+// ячейка коллекции с категорией меню
 class CategoryCollectionViewCell: UICollectionViewCell {
     
     lazy var categoryLabel: UILabel = {

@@ -7,6 +7,7 @@
 
 import UIKit
 
+// ячейка таблицы с баннерами
 class BannersTableViewCell: UITableViewCell {
     
     private lazy var collectionView: UICollectionView = {

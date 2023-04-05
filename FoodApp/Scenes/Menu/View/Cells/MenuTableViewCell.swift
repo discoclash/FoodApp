@@ -7,11 +7,12 @@
 
 import UIKit
 
+// ячейка с едой для меню
 class MenuTableViewCell: UITableViewCell {
     
     var category: Category?
     
-    lazy var foodImage: UIImageView = {
+    private lazy var foodImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .center
         return image
@@ -61,11 +62,20 @@ class MenuTableViewCell: UITableViewCell {
         foodImage.image = nil
     }
     
-    func setupCell (name: String, description: String, price: Int, category: Category) {
+    func setupCell (imageUrl: String, name: String, description: String, price: Int, category: Category) {
         foodName.text = name
         foodDescription.text = description
         foodPrice.text = "от \(price) руб"
         self.category = category
+        if let url = URL(string: "http://localhost:5050/" + imageUrl) {
+            let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, _ in
+                guard let data = data else { return }
+                DispatchQueue.main.async {
+                    self?.foodImage.image = UIImage(data: data)
+                }
+            }
+            task.resume()
+        }
     }
     
     private func setupView() {
