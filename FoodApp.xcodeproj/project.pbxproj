@@ -29,7 +29,6 @@
 		25992A6629DBBF7C00D6AF77 /* BannersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25992A6529DBBF7C00D6AF77 /* BannersTableViewCell.swift */; };
 		25992A6C29DBFEDF00D6AF77 /* BannersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25992A6B29DBFEDF00D6AF77 /* BannersCollectionViewCell.swift */; };
 		25992A6E29DC290900D6AF77 /* MenuCategoryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25992A6D29DC290900D6AF77 /* MenuCategoryHeader.swift */; };
-		25AD4CC129DDD4E900A377A2 /* MenuModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 25AD4CBF29DDD4E900A377A2 /* MenuModel.xcdatamodeld */; };
 		25AD4CE629DDDE1400A377A2 /* TopMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AD4CE529DDDE1400A377A2 /* TopMenuTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,6 @@
 		25992A6529DBBF7C00D6AF77 /* BannersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersTableViewCell.swift; sourceTree = "<group>"; };
 		25992A6B29DBFEDF00D6AF77 /* BannersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersCollectionViewCell.swift; sourceTree = "<group>"; };
 		25992A6D29DC290900D6AF77 /* MenuCategoryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCategoryHeader.swift; sourceTree = "<group>"; };
-		25AD4CC029DDD4E900A377A2 /* MenuModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MenuModel.xcdatamodel; sourceTree = "<group>"; };
 		25AD4CE529DDDE1400A377A2 /* TopMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopMenuTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,7 +133,6 @@
 				257BA83929DAB45F000F331E /* MenuInteractor.swift */,
 				257BA83529DAA365000F331E /* MenuPresenter.swift */,
 				259928ED29DBAEBD00D6AF77 /* MenuTableManager.swift */,
-				25AD4CBF29DDD4E900A377A2 /* MenuModel.xcdatamodeld */,
 				2599277329DB9C2200D6AF77 /* Provider */,
 				2599277629DBAB3C00D6AF77 /* View */,
 				257BA83029DA97CA000F331E /* Models */,
@@ -240,7 +237,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				25AD4CE629DDDE1400A377A2 /* TopMenuTableViewCell.swift in Sources */,
-				25AD4CC129DDD4E900A377A2 /* MenuModel.xcdatamodeld in Sources */,
 				25992A6629DBBF7C00D6AF77 /* BannersTableViewCell.swift in Sources */,
 				257BA83A29DAB45F000F331E /* MenuInteractor.swift in Sources */,
 				2599277829DBAB6300D6AF77 /* MenuView.swift in Sources */,
@@ -468,19 +464,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		25AD4CBF29DDD4E900A377A2 /* MenuModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				25AD4CC029DDD4E900A377A2 /* MenuModel.xcdatamodel */,
-			);
-			currentVersion = 25AD4CC029DDD4E900A377A2 /* MenuModel.xcdatamodel */;
-			path = MenuModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2575DB0F29DA668300158865 /* Project object */;
 }

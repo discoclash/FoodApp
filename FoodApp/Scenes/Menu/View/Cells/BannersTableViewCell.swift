@@ -40,7 +40,7 @@ class BannersTableViewCell: UITableViewCell {
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            contentView.heightAnchor.constraint(equalToConstant: 136)
+            collectionView.heightAnchor.constraint(equalToConstant: 136)
         ])
     }
 }
@@ -63,7 +63,7 @@ extension BannersTableViewCell: UICollectionViewDataSource {
 extension BannersTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 136)
+        return CGSize(width: 300, height: 112)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

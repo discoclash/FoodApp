@@ -27,23 +27,15 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        categoryLabel.layer.borderWidth = 1
-        categoryLabel.layer.borderColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4).cgColor
-        categoryLabel.backgroundColor = .clear
-        categoryLabel.textColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4)
-    }
-    
     func setupCell(categoryName: String, isSelected: Bool) {
         categoryLabel.text = categoryName
+        categoryLabel.layer.borderColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4).cgColor
         if isSelected {
             categoryLabel.layer.borderWidth = 0
             categoryLabel.layer.backgroundColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.2).cgColor
             categoryLabel.textColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 1)
         } else {
             categoryLabel.layer.borderWidth = 1
-            categoryLabel.layer.borderColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4).cgColor
             categoryLabel.layer.backgroundColor = UIColor.clear.cgColor
             categoryLabel.textColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4)
         }
