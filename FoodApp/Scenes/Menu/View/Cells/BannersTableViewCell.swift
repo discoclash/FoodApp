@@ -14,7 +14,7 @@ class BannersTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = UIColor(red: 0.953, green: 0.961, blue: 0.976, alpha: 1)
+        collection.backgroundColor = .clear
         collection.showsHorizontalScrollIndicator = false
         collection.dataSource = self
         collection.delegate = self
@@ -34,6 +34,7 @@ class BannersTableViewCell: UITableViewCell {
     
     private func setupView() {
         contentView.addSubview(collectionView)
+        backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),

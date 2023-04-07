@@ -28,7 +28,7 @@ class TopMenuTableViewCell: UITableViewCell {
 
     
     private func setupView() {
-        contentView.backgroundColor = UIColor(red: 0.953, green: 0.961, blue: 0.976, alpha: 1)
+        backgroundColor = .clear
         contentView.addSubview(topView)
         topView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

@@ -14,6 +14,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.layer.cornerRadius = 16
+        label.layer.borderColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4).cgColor
         label.font = .systemFont(ofSize: 13)
         return label
     }()
@@ -29,7 +30,6 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     
     func setupCell(categoryName: String, isSelected: Bool) {
         categoryLabel.text = categoryName
-        categoryLabel.layer.borderColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.4).cgColor
         if isSelected {
             categoryLabel.layer.borderWidth = 0
             categoryLabel.layer.backgroundColor = UIColor(red: 0.992, green: 0.227, blue: 0.412, alpha: 0.2).cgColor

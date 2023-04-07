@@ -17,7 +17,7 @@ class MenuCategoryHeader: UITableViewHeaderFooterView {
     
     weak var delegate: SelectedCategoryDelegate?
     
-    var selectedCategory: Category = .pizza
+    private var selectedCategory: Category = .pizza
     
     private var categories: [Category] = [.pizza, .combo, .deserts, .drinks]
     
