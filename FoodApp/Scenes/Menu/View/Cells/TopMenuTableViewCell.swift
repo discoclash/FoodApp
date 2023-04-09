@@ -25,7 +25,6 @@ class TopMenuTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     
     private func setupView() {
         backgroundColor = .clear
@@ -39,5 +38,4 @@ class TopMenuTableViewCell: UITableViewCell {
             topView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-
 }

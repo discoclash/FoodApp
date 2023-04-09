@@ -13,7 +13,7 @@ protocol ScrollToCategoryDelegate: AnyObject {
 
 // протокол делегата для смены выбранной категории в хэдере во время скрола
 protocol SelectCategoryDelegate: AnyObject {
-    func selectCategory(category: Category)
+    func selectCategory(category: String)
 }
 
 // протокол TableManager'a для внешнего взамодействия
@@ -53,16 +53,24 @@ final class MenuTableManager: NSObject, MenuTableManagerProtocol {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell else { return UITableViewCell() }
         cell.selectionStyle = .none
         let foodModel = menuModels[indexPath.row - 1]
-        if let url = URL(string: "http://localhost:5050/" + foodModel.imageUrl) {
-            let task = URLSession.shared.dataTask(with: url) { [weak cell] data, _, _ in
-                guard let data = data else { return }
-                DispatchQueue.main.async {
-                    cell?.setupImage(image: UIImage(data: data))
+        if  let image = foodModel.imageData {
+            cell.setupImage(image: UIImage(data: image))
+        } else {
+            if let url = URL(string: "http://localhost:5050/" + foodModel.imageUrl) {
+                let task = URLSession.shared.dataTask(with: url) { [weak cell] data, _, _ in
+                    guard let data = data else { return }
+                    DispatchQueue.main.async {
+                        cell?.setupImage(image: UIImage(data: data))
+                        CoreDataManager.shared.updateCell(index: Int16(indexPath.row - 1), newImage: data)
+                    }
                 }
+                task.resume()
             }
-            task.resume()
         }
-        cell.setupCell(name: foodModel.name, description: foodModel.description, price: foodModel.price, category: foodModel.category)
+        cell.setupCell(name: foodModel.name,
+                       description: foodModel.description,
+                       price: foodModel.price,
+                       category: foodModel.category.rawValue)
         return cell
     }
     
@@ -71,9 +79,17 @@ final class MenuTableManager: NSObject, MenuTableManagerProtocol {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {return nil}
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuCategoryHeader") as! MenuCategoryHeader
-        header.delegate = self
+        if section == 0 { return nil }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MenuCategoryHeader") as? MenuCategoryHeader else {return nil}
+        var categories: [String] = []
+        menuModels.forEach {
+            if let previous = categories.last {
+                if $0.category.rawValue != previous { categories.append($0.category.rawValue)}
+            } else {
+                categories.append($0.category.rawValue)
+            }
+        }
+        header.setupHeader(categories: categories, delegate: self)
         return header
     }
     
@@ -96,8 +112,8 @@ final class MenuTableManager: NSObject, MenuTableManagerProtocol {
 }
 
 extension MenuTableManager: SelectedCategoryDelegate {
-    func categoryDidSelected(category: Category) {
-        if let index = menuModels.firstIndex(where: { $0.category == category}) {
+    func categoryDidSelected(category: String) {
+        if let index = menuModels.firstIndex(where: { $0.category.rawValue == category}) {
             scrollToCategoryDelegate?.scrollToCategory(index: index + 1)
         }
     }

@@ -9,7 +9,7 @@ import UIKit
 
 // протокол делегата для скрола до необходимой категории в меню
 protocol SelectedCategoryDelegate: AnyObject {
-    func categoryDidSelected(category: Category)
+    func categoryDidSelected(category: String)
 }
 
 // хэдер таблицы меню с категориями еды
@@ -17,9 +17,9 @@ class MenuCategoryHeader: UITableViewHeaderFooterView {
     
     weak var delegate: SelectedCategoryDelegate?
     
-    private var selectedCategory: Category = .pizza
+    private var selectedCategory: String?
     
-    private var categories: [Category] = [.pizza, .combo, .deserts, .drinks]
+    var categories: [String] = []
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -42,6 +42,11 @@ class MenuCategoryHeader: UITableViewHeaderFooterView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupHeader(categories: [String], delegate: SelectedCategoryDelegate?) {
+        self.categories = categories
+        self.delegate = delegate
+        collectionView.reloadData()
+    }
     
     private func setupView() {
         contentView.addSubview(collectionView)
@@ -63,7 +68,7 @@ extension MenuCategoryHeader: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell {
             let isSelected = selectedCategory == categories[indexPath.item]
-            cell.setupCell(categoryName: categories[indexPath.item].rawValue, isSelected: isSelected)
+            cell.setupCell(categoryName: categories[indexPath.item], isSelected: isSelected)
             return cell
         }
         return UICollectionViewCell()
@@ -90,7 +95,7 @@ extension MenuCategoryHeader: UICollectionViewDelegateFlowLayout {
 }
 
 extension MenuCategoryHeader: SelectCategoryDelegate {
-    func selectCategory(category: Category) {
+    func selectCategory(category: String) {
         selectedCategory = category
         collectionView.reloadData()
         guard let index = categories.firstIndex(where: { $0 == category} ) else { return }

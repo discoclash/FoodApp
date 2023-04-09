@@ -20,7 +20,35 @@ final class MenuProvider: ProvidesMenu {
     
     func fetchMenu(completion: @escaping (Result<[FoodModel], Error>) -> Void) {
         service.fetchMenu { result in
-            completion(result)
+            switch result {
+            case let .success(response):
+                CoreDataManager.shared.deleteAllCells()
+                for (index, foodModel) in response.enumerated() {
+                    CoreDataManager.shared.createCell(index: Int16(index),
+                                                      category: foodModel.category.rawValue,
+                                                      name: foodModel.name,
+                                                      description: foodModel.description,
+                                                      price: Int16(foodModel.price),
+                                                      image: nil)
+                }
+                completion(.success(response))
+            case let .failure(error):
+                let cells = CoreDataManager.shared.fetchCells()
+                if cells.count > 0 {
+                    var menuModel: [FoodModel] = []
+                    for cell in cells {
+                        menuModel.append(FoodModel(category: (Category(rawValue: cell.foodCategory) ?? .unknown),
+                                                   name: cell.foodName,
+                                                   description: cell.foodDetailes,
+                                                   price: Int(cell.foodPrice),
+                                                   imageUrl: "Unknown",
+                                                   imageData: cell.foodImage))
+                    }
+                    completion(.success(menuModel))
+                } else {
+                    completion(.failure(error))
+                }
+            }
         }
     }
 }

@@ -12,11 +12,9 @@ protocol NetworkServicing: AnyObject {
 }
 
 final class MenuService: NetworkServicing {
-    private let jsonDecoder: JSONDecoder
     private let uri: String
     
-    init(decoder: JSONDecoder = JSONDecoder(), uri: String) {
-        self.jsonDecoder = decoder
+    init(uri: String) {
         self.uri = uri
     }
     
@@ -26,7 +24,7 @@ final class MenuService: NetworkServicing {
             return
         }
         
-        let dataTask = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             DispatchQueue.main.async {
                 if let error {
                     completion(.failure(error))
@@ -34,7 +32,7 @@ final class MenuService: NetworkServicing {
                 }
                 guard
                     let data = data,
-                    let decodedData = try? self?.jsonDecoder.decode([FoodModel].self, from: data)
+                    let decodedData = try? JSONDecoder().decode([FoodModel].self, from: data)
                 else {
                     completion(.failure(URLError(.badServerResponse)))
                     return

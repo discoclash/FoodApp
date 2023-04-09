@@ -13,6 +13,7 @@ struct FoodModel: Decodable {
     let description: String
     let price: Int
     let imageUrl: String
+    let imageData: Data?
 }
 
 enum Category: String, Decodable {
@@ -20,4 +21,5 @@ enum Category: String, Decodable {
     case combo = "Комбо"
     case deserts = "Десерты"
     case drinks = "Напитки"
+    case unknown
 }

@@ -10,9 +10,9 @@ import UIKit
 // ячейка с едой для меню
 class MenuTableViewCell: UITableViewCell {
     
-    var category: Category?
+    var category: String?
     
-    var foodImage: UIImageView = {
+    private lazy var foodImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .center
         return image
@@ -57,12 +57,7 @@ class MenuTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        foodImage.image = nil
-    }
-    
-    func setupCell (name: String, description: String, price: Int, category: Category) {
+    func setupCell (name: String, description: String, price: Int, category: String) {
         foodName.text = name
         foodDescription.text = description
         foodPrice.text = "от \(price) руб"
