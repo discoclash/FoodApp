@@ -7,6 +7,7 @@
 *Примечание: для активации хоста к локальному серверу с API необходимо перед запуском эмуляции проекта в xCode открыть директорию "LocalServer" в терминале и ввести команду:*
 ```
 python3 -m http.server 5050
+```
 
 ## Preview
 ![Preview](https://github.com/discoclash/FoodApp/blob/main/Preview.gif)
